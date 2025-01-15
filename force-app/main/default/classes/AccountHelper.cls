@@ -28,4 +28,11 @@ public with sharing class AccountHelper {
             }
         }
     }
+
+    public static void CreateRelatedContact(List<Account> accList) {
+        for(Account acc : accList) {
+            Contact toInsert = new Contact(LastName='Name', AccountId = acc.Id);
+            insert toInsert;
+        }
+    }
 }
