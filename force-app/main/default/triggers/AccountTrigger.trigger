@@ -9,7 +9,7 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
         }
 
         when BEFORE_DELETE {
-            AccountHelper.PreventDelete(Trigger.new);
+            AccountHelper.PreventDelete(Trigger.old);
         }
     
     }

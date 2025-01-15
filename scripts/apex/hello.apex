@@ -5,6 +5,23 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+List<Contact> conList = [SELECT Id, Account.Name FROM Contact];
+        
+Map<Account, Integer> accountCon = new Map<Account, Integer>();
+
+List<Account> accList = [SELECT Name FROM Account];
+
+for(Account acc : accList) {
+    for(Contact con : conList) {
+        if(con.Account.Name.equals(acc.Name)) {
+            if(accountCon.containsKey(acc)) { 
+                accountCon.put(acc, accountCon.get(acc) + 1);
+            }
+            else {
+                accountCon.put(acc, 1);
+            }
+        }
+    }
+}
+
+System.debug(accountCon);
