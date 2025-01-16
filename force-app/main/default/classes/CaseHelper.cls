@@ -12,9 +12,13 @@ public with sharing class CaseHelper {
     public static void SetStatusWorking(List<Case> oldCase, List<Case> newCase) {
 
         for(Integer i = 0; i < newCase.size(); i++) {
-            if(!oldCase.get(i).Comments.equals(newCase.get(i).Comments) && oldCase.get(i).Status.equals('New')) {
+            if(oldCase.get(i).Comments != newCase.get(i).Comments && oldCase.get(i).Status.equals('New')) {
                 newCase.get(i).Status = 'Working';
             }
         }
+    }
+
+    public static void SetProduct(List<Case> orderList) {
+        
     }
 }
